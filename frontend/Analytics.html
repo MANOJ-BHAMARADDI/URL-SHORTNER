@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
+    <title>URL Analytics</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,9 +20,14 @@
             </ul>
         </div>
     </nav>
-    <div>
-        <h1>COMING SOON...</h1>
+    <div class="container">
+        <h1>URL Analytics</h1>
+        <form id="analytics-form">
+            <input type="text" id="short-id-input" placeholder="Enter Short URL ID" required>
+            <button type="submit">Get Analytics</button>
+        </form>
+        <div id="analytics-result"></div>
     </div>
-    <script src="script.js"></script>
+    <script src="analytics.js"></script>
 </body>
 </html>
