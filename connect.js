@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import { connect } from "mongoose";
 
 async function connectToMongoDB(url) {
     try {
-        await mongoose.connect(url, {
+        await connect(url, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -13,6 +13,6 @@ async function connectToMongoDB(url) {
     }
 }
 
-module.exports = {
+export default {
     connectToMongoDB,
 };

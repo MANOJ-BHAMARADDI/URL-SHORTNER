@@ -3,7 +3,7 @@ document.getElementById('analytics-form').addEventListener('submit', async funct
     const shortId = document.getElementById('short-id-input').value;
 
     try {
-        const response = await fetch(`http://localhost:8001/url/analytics/${shortId}`, {
+        const response = await fetch(`https://url-shortner-scpq.onrender.com/url/analytics/${shortId}`, {  // ✅ Updated URL
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -3,7 +3,7 @@ document.getElementById('url-form').addEventListener('submit', async function(ev
     const url = document.getElementById('url-input').value;
 
     try {
-        const response = await fetch('http://localhost:8001/url', {
+        const response = await fetch('https://url-shortner-scpq.onrender.com/url', {  // ✅ Updated URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -16,7 +16,7 @@ document.getElementById('url-form').addEventListener('submit', async function(ev
         }
 
         const data = await response.json();
-        document.getElementById('result').innerHTML = `Shortened URL: <a href="http://localhost:8001/${data.id}" target="_blank">http://localhost:8001/${data.id}</a>`;
+        document.getElementById('result').innerHTML = `Shortened URL: <a href="https://url-shortner-scpq.onrender.com/${data.id}" target="_blank">https://url-shortner-scpq.onrender.com/${data.id}</a>`; // ✅ Updated URL
     } catch (error) {
         document.getElementById('result').textContent = 'Error: ' + error.message;
     }
