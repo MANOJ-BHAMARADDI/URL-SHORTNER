@@ -1,11 +1,11 @@
-const shortid = require("shortid");
-const URL = require("../models/url");
+import { generate } from "shortid";
+import URL from "../models/url.js"; // Add .js extension
 
-async function handleGenerateNewShortURL(req, res) {
+const handleGenerateNewShortURL = async function (req, res) {
     const body = req.body;
     if (!body.URL) return res.status(400).json({ error: "URL is required" });
 
-    const shortID = shortid.generate();
+    const shortID = generate();
 
     try {
         await URL.create({
@@ -14,14 +14,14 @@ async function handleGenerateNewShortURL(req, res) {
             visitHistory: [],
         });
 
-        return res.json({ id: shortID });
+        return res.json({ shortId: shortID });
     } catch (error) {
-        console.error("Error creating new short URL:", error);
+        console.error("Error creating new URL:", error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
-}
+};
 
-async function handleGetAnalytics(req, res) {
+const handleGetAnalytics = async function (req, res) {
     const shortId = req.params.shortId;
 
     try {
@@ -39,9 +39,6 @@ async function handleGetAnalytics(req, res) {
         console.error("Error fetching analytics:", error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
-}
-
-module.exports = {
-    handleGenerateNewShortURL,
-    handleGetAnalytics,
 };
+
+export { handleGenerateNewShortURL, handleGetAnalytics }; // Use named exports

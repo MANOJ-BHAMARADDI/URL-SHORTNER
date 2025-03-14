@@ -1,9 +1,10 @@
-require('dotenv').config();
-const express = require("express");
-const { connectToMongoDB } = require("./connect");
-const urlroute = require("./routes/url");
-const URL = require("./models/url");
-const cors = require("cors");
+import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
+import { connectToMongoDB } from "./connect.js"; // Add .js extension
+import urlroute from "./routes/url.js"; // Add .js extension
+import URL from "./models/url.js"; // Add .js extension
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 8001;

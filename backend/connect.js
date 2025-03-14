@@ -1,4 +1,4 @@
-const { connect } = require("mongoose");
+import { connect } from "mongoose";
 
 async function connectToMongoDB(url) {
     try {
@@ -13,4 +13,4 @@ async function connectToMongoDB(url) {
     }
 }
 
-module.exports = { connectToMongoDB }; 
+export { connectToMongoDB }; // Use named exports
