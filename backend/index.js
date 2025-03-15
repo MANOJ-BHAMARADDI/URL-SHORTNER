@@ -27,12 +27,10 @@ app.get("/:shortId", async (req, res) => {
             { shortId },
             {
                 $push: {
-                    visitHistory: {
-                        timestamp: Date.now(),
-                    },
+                    visitHistory: { timestamp: Date.now() },
                 },
             },
-            { new: true } // Return the updated document
+            { new: true }
         );
 
         if (entry) {
@@ -45,5 +43,6 @@ app.get("/:shortId", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
 
 app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));
