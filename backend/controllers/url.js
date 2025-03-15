@@ -3,7 +3,7 @@ import URL from "../models/url.js"; // Add .js extension
 
 const handleGenerateNewShortURL = async function (req, res) {
     const body = req.body;
-    if (!body.URL) return res.status(400).json({ error: "URL is required" });
+    if (!body.longUrl) return res.status(400).json({ error: "longUrl is required" });
 
     const shortID = generate();
 
