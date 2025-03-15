@@ -14,7 +14,7 @@ const Analytics = () => {
         }
     
         try {
-            const response = await axios.get(`http://localhost:8001/url/analytics/${shortId}`);
+            const response = await axios.get(`http://localhost:8001/api/analytics/${shortId}`);
             setAnalytics(response.data);
             setError("");
         } catch (err) {

@@ -15,7 +15,7 @@ const UrlForm = () => {
     }
 
     try {
-        const response = await axios.post("http://localhost:8001/url", { URL: longUrl });
+        const response = await axios.post("http://localhost:8001/api", { URL: longUrl });
         setShortUrl(`http://localhost:8001/${response.data.shortId}`);
         setError("");
     } catch (err) {
