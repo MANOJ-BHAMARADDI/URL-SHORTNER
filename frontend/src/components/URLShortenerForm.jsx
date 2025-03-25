@@ -9,7 +9,7 @@ const URLShortenerForm = () => {
   const handleShorten = async () => {
     try {
       // const res = await api.post("/api/shorten", { originalUrl });
-      const res = await axios.post("http://localhost:5000/api/shorten", { originalUrl });
+      const res = await axios.post("https://url-shortner-851m.onrender.com/api/shorten", { originalUrl });
 
       // Ensure short URL is always valid
       setShortUrl(res.data.shortUrl);
