@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+import api, { API_BASE_URL } from "../api";
 
 const URLList = () => {
   const [urls, setUrls] = useState([]);
 
   const fetchUrls = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/urls`);
+      const response = await api.get("/api/urls");
       if (Array.isArray(response.data)) {
         setUrls(response.data);
       } else {
@@ -49,46 +47,30 @@ const URLList = () => {
                 </tr>
               </thead>
               <tbody>
-                {urls.map((url) => (
-                  <tr key={url._id} className="border-b border-gray-200 hover:bg-gray-50">
-                    <td className="px-4 py-2 border-r border-gray-300 text-blue-600 truncate max-w-[200px]">
-                      <a href={url.originalUrl} target="_blank" rel="noopener noreferrer">
-                        {url.originalUrl}
-                      </a>
-                    </td>
-                    <td className="px-4 py-2 border-r border-gray-300">
-                      <a
-                        href={`${API_BASE_URL}/${url.shortId}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 underline"
-                      >
-                        {`${API_BASE_URL}/${url.shortId}`}
-                      </a>
-                    </td>
-                    <td className="px-4 py-2 text-center">{url.clickCount}</td>
-                  </tr>
-                ))}
+                {urls.map((url) => {
+                  const shortUrl = `${API_BASE_URL}/${url.shortId}`;
+
+                  return (
+                    <tr key={url._id} className="border-b border-gray-200 hover:bg-gray-50">
+                      <td className="px-4 py-2 border-r border-gray-300 text-blue-600 truncate max-w-[200px]">
+                        <a href={url.originalUrl} target="_blank" rel="noopener noreferrer">
+                          {url.originalUrl}
+                        </a>
+                      </td>
+                      <td className="px-4 py-2 border-r border-gray-300">
+                        <a href={shortUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                          {shortUrl}
+                        </a>
+                      </td>
+                      <td className="px-4 py-2 text-center">{url.clickCount}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
-      <footer className="p-4 -m-5 bg-gray-900 text-white text-center">
-        <p>Connect with me:</p>
-        <div className="flex justify-center space-x-4 mt-2">
-          <a href="https://linkedin.com/in/manoj" target="_blank" className="hover:underline">
-            🔗 LinkedIn
-          </a>
-          <a href="https://github.com/manoj" target="_blank" className="hover:underline">
-            💻 GitHub
-          </a>
-          <a href="https://twitter.com/manoj" target="_blank" className="hover:underline">
-            🐦 Twitter
-          </a>
-        </div>
-      </footer>
     </div>
   );
 };
