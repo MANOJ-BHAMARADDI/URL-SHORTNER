@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import api, { API_BASE_URL } from "../api";
+import axios from "axios";
 
 const URLList = () => {
   const [urls, setUrls] = useState([]);
 
   const fetchUrls = async () => {
     try {
-      const response = await api.get("/api/urls");
+      // const response = await api.get("/api/urls");
+      const response = await axios.get("https://url-shortner-851m.onrender.com/api/urls")
       if (Array.isArray(response.data)) {
         setUrls(response.data);
       } else {
